@@ -1,0 +1,20 @@
+{
+    "name": "dylangl/math",
+    "description": "一些常用的数学函数",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dylan",
+            "email": "dylangl@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dylangl\\Math\\": "src"
+        }
+    }
+}
