@@ -9,7 +9,7 @@ class MathCount
      * 生成唯一标识
      * @return string
      */
-    function createUnique()
+    public static function createUnique()
     {
         //进程ID
         $pid = getmypid();
