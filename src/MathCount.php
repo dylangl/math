@@ -6,6 +6,35 @@ namespace Dylangl\Math;
 class MathCount
 {
     /**
+     * 生成唯一标识
+     * @return string
+     */
+    function createUnique()
+    {
+        //进程ID
+        $pid = getmypid();
+        //毫秒
+        $microTime = microtime(TRUE);
+        $unique = $_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR'] . $pid . $microTime . time() . rand();
+        $unique = sha1($unique);
+        return substr($unique, 8, 16);
+    }
+
+    /**
+     * 生成订单号 dddddmtttttmrrrr
+     * d5位1970到现在的天数，m机器码分布到t的前后，t 5位当天的秒数,r 4位随机数
+     * @return string
+     */
+    public static function genOrderId()
+    {
+        $days = intval(time() / 86400);
+        $secs = time() - $days * 86400;
+        $machineCode = sprintf("%02d", rand(0, 99));
+        $num = mt_rand(1, 9999);
+        return sprintf("%05d%01d%05d%01d%04d", $days, $machineCode{0}, $secs, $machineCode{1}, $num);
+    }
+
+    /**
      * 二维数组排序
      * @param array $arr 需要排序的二维数组
      * @param string $keys 所根据排序的key
